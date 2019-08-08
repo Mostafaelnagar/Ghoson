@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="myOrdersViewModels"
+            type="app.grand.a8oson.viewModels.MyOrdersViewModels" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.MyOrdersFragment">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTitle"
+            app:cardBackgroundColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp80h">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:id="@+id/orderStatus"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawableStart="@drawable/ic_arrow_down"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:hint="@string/orderTypesHint"
+                    android:onClick="@{() -> myOrdersViewModels.orderStatus()}"
+                    android:text="@={myOrdersViewModels.statusName}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:text="@string/myOrdersTitle"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardTitle"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/dp8h"
+            android:text="@string/emptyOrders"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:visibility="@{myOrdersViewModels.emptyList,default=gone}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recMyOrders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/cardTitle"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:myOrdersAdapter="@{myOrdersViewModels.myOrdersAdapter}" />
+
+    </RelativeLayout>
+</layout>

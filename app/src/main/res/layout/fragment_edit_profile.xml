@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="profileViewModels"
+            type="app.grand.a8oson.viewModels.ProfileViewModels" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/pr_rel_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/dp12h"
+                android:onClick="@{() -> profileViewModels.goBack()}"
+                android:paddingLeft="@dimen/dp4h" />
+
+            <TextView
+                android:id="@+id/pr_tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp12h"
+                android:hint="-----------"
+                android:text="@={profileViewModels.useName}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pr_tv_name">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/userProfileImage"
+                    android:layout_width="@dimen/dp80w"
+                    android:layout_height="@dimen/dp80h"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:onClick="@{() -> profileViewModels.PickUpProfileImage()}"
+                    android:src="@drawable/man"
+                    app:civ_border_color="@color/colorAccent"
+                    app:civ_border_width="2dp"
+                    app:profileImage="@{profileViewModels.userData.image.name}" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="3dp"
+                    android:layout_centerInParent="true"
+                    android:layout_toLeftOf="@+id/userProfileImage"
+                    android:background="?android:attr/listDivider" />
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="wrap_content"
+                    android:layout_height="3dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@+id/userProfileImage"
+                    android:background="?android:attr/listDivider" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/edPr_lin_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/pr_rel_data"
+            android:orientation="vertical">
+
+            <app.grand.a8oson.base.CustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp12h"
+                android:gravity="right"
+                android:hint="@string/editProfileName"
+                android:inputType="text"
+                android:paddingRight="@dimen/dp4h"
+                android:text="@={profileViewModels.userData.name}" />
+
+            <app.grand.a8oson.base.CustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp12h"
+                android:gravity="right"
+                android:hint="@string/editProfileEmail"
+                android:inputType="textEmailAddress"
+                android:paddingRight="@dimen/dp4h"
+
+                android:text="@={profileViewModels.userData.email}" />
+
+            <app.grand.a8oson.base.CustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp12h"
+                android:gravity="right"
+                android:hint="@string/editProfilePhone"
+                android:inputType="phone"
+                android:paddingRight="@dimen/dp4h"
+
+                android:text="@={profileViewModels.userData.mobile}" />
+
+            <app.grand.a8oson.base.CustomEditText
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp12h"
+                android:gravity="right"
+                android:hint="@string/editProfileBirthday"
+                android:inputType="number"
+                android:paddingRight="@dimen/dp4h"
+                android:text="@={profileViewModels.userData.dateOfBirth}" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/edPr_lin_data"
+            android:layout_marginRight="@dimen/dp12h"
+            android:text="@string/editProfileGender"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorPrimaryDark" />
+
+        <belka.us.androidtoggleswitch.widgets.ToggleSwitch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/edPr_lin_data"
+            android:layout_margin="@dimen/dp8h"
+            android:switchTextAppearance="@style/TextAppearance.AppCompat.Medium"
+            app:activeBgColor="@color/colorPrimaryDark"
+            app:activeTextColor="@color/colorWhite"
+            app:inactiveBgColor="@color/colorWhite"
+            app:inactiveTextColor="@color/colorPrimaryDark"
+            app:separatorColor="@color/colorAccent"
+            app:textToggleLeft="@string/editProfileFemale"
+            app:textToggleRight="@string/editProfileMale"
+            app:toggleWidth="82dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/dp12h"
+            android:background="@drawable/corner_view"
+            android:onClick="@{() -> profileViewModels.updateUser()}"
+            android:text="@string/editProfileSave"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/white" />
+    </RelativeLayout>
+</layout>

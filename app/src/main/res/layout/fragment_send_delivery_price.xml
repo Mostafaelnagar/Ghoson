@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="orderViewModels"
+            type="app.grand.a8oson.viewModels.SendPriceViewModels" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="@{orderViewModels.loading,default=gone}">
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80h">
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:onClick="@{() -> orderViewModels.toBack()}"
+                        android:paddingRight="@dimen/dp4h"
+                        android:src="@drawable/ic_back_forward" />
+
+                    <TextView
+                        android:id="@+id/pr_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:hint="@string/marketHint"
+                        android:text="@{orderViewModels.detail.marketName}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <fragment
+                android:id="@+id/sendPriceMap"
+                android:name="com.google.android.gms.maps.MapFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp180h"
+                android:layout_below="@+id/cardTitle" />
+
+            <LinearLayout
+                android:id="@+id/lin_send_storeData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sendPriceMap"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:drawablePadding="@dimen/dp8w"
+                    android:drawableRight="@drawable/ic_shope"
+                    android:gravity="right|center_vertical"
+                    android:padding="@dimen/dp8h"
+                    android:text="@string/shopText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="@dimen/dp35w"
+                    android:drawablePadding="@dimen/dp8w"
+                    android:gravity="right"
+                    android:padding="@dimen/dp8h"
+                    android:text="@{orderViewModels.detail.marketName}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="@dimen/dp35w"
+                    android:drawablePadding="@dimen/dp8w"
+                    android:gravity="right"
+                    android:padding="@dimen/dp8h"
+                    android:text="@{orderViewModels.detail.marketAddress}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/lin_send_storeData"
+                android:layout_marginBottom="@dimen/dp8h"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+
+            <LinearLayout
+                android:id="@+id/lin_send_userData"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider5"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:drawablePadding="@dimen/dp8w"
+                    android:drawableRight="@drawable/ic_profile"
+                    android:gravity="right|center_vertical"
+                    android:padding="@dimen/dp8h"
+                    android:text="@string/userDataText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="@dimen/dp35w"
+                    android:drawablePadding="@dimen/dp8w"
+                    android:gravity="right"
+                    android:padding="@dimen/dp8h"
+                    android:text="@{orderViewModels.detail.user.name}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="@dimen/dp35w"
+                    android:drawablePadding="@dimen/dp8w"
+                    android:gravity="right"
+                    android:padding="@dimen/dp8h"
+                    android:text="@{orderViewModels.detail.user.mobile}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="@dimen/dp35w"
+                    android:drawablePadding="@dimen/dp8w"
+                    android:gravity="right"
+                    android:padding="@dimen/dp8h"
+                    android:text="@{orderViewModels.detail.address}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+            </LinearLayout>
+
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/lin_send_userData"
+                android:layout_marginBottom="@dimen/dp8h"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+
+            <RelativeLayout
+                android:id="@+id/rel_order_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider6"
+                android:layout_marginRight="@dimen/dp12w">
+
+                <TextView
+                    android:id="@+id/pr_tv_orderDesc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_margin="@dimen/dp4h"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:text="@string/orderDesc"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pr_tv_orderDesc"
+                    android:layout_margin="@dimen/dp12h"
+                    android:gravity="right"
+                    android:text="@{orderViewModels.detail.description}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:id="@+id/divider8"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rel_order_desc"
+                android:layout_marginBottom="@dimen/dp8h"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+
+            <LinearLayout
+                android:id="@+id/lin_send_Price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider8"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="@dimen/dp35w"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:gravity="right|center_vertical"
+                    android:padding="@dimen/dp8h"
+                    android:text="@string/addPriceText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <app.grand.a8oson.base.CustomEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/dp15w"
+                    android:background="@drawable/border_shape"
+                    android:hint="@string/addPriceText"
+                    android:padding="@dimen/dp12h"
+                    android:text="@={orderViewModels.offerRequest.offerCost}" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/sendPriceButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lin_send_Price"
+                android:background="@drawable/fill_view"
+                android:onClick="@{() -> orderViewModels.sendOffer()}"
+                android:text="@string/sendPriceText"
+                android:textColor="@color/colorWhite" />
+        </RelativeLayout>
+    </ScrollView>
+</layout>

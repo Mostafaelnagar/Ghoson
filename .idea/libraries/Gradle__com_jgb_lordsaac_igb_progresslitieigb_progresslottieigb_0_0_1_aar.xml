@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.jgb.lordsaac.igb.progresslitieigb:progresslottieigb:0.0.1@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-progresslottieigb-0.0.1.aar/ba20d33e47353f393787bf3804824403/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/jetified-progresslottieigb-0.0.1.aar/ba20d33e47353f393787bf3804824403/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jgb.lordsaac.igb.progresslitieigb/progresslottieigb/0.0.1/f5eeced435f3e50d609dfda017882c4495eefe1c/progresslottieigb-0.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

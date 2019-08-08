@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="orderNowViewModel"
+            type="app.grand.a8oson.viewModels.OrderNowViewModel" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorWhite">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80h">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/dp8h">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="@dimen/dp12h"
+                        android:onClick="@{() -> orderNowViewModel.toBack()}"
+                        android:src="@drawable/ic_back_forward" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:text="@string/placeHolder"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="@dimen/dp12h"
+                        android:onClick="@{() -> orderNowViewModel.createOrder()}"
+                        android:src="@drawable/ic_check" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/delivertext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/cardTitle"
+                android:layout_margin="@dimen/dp8h"
+                android:drawablePadding="@dimen/dp15w"
+                android:drawableRight="@drawable/ic_location"
+                android:text="@string/orderText"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+            <TextView
+                android:id="@+id/pickLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/delivertext"
+                android:layout_marginRight="@dimen/dp35w"
+                android:hint="@string/orderAddress"
+                android:onClick="@{() -> orderNowViewModel.pickUpDeliverdLocation()}"
+                android:paddingRight="@dimen/dp20w"
+                android:text="@={orderNowViewModel.deliveredLocation}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/pickLocation"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/timetext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/divider3"
+                android:layout_margin="@dimen/dp8h"
+                android:drawablePadding="@dimen/dp15w"
+                android:drawableRight="@drawable/ic_time"
+                android:text="@string/orderTimeText"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <RelativeLayout
+                android:id="@+id/rel_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/timetext"
+                android:layout_marginBottom="@dimen/dp4h"
+                android:paddingRight="@dimen/dp20w">
+
+                <app.grand.a8oson.base.TimeEditText
+                    android:id="@+id/pickTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dp20w"
+                    android:background="@color/colorWhite"
+                    android:focusable="false"
+                    android:gravity="right"
+                    android:hint="@string/orderTime"
+                    android:text="@={orderNowViewModel.deliveredTime}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <app.grand.a8oson.base.DateEditText
+                    android:id="@+id/pickDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/dp20w"
+                    android:background="@color/colorWhite"
+                    android:focusable="false"
+                    android:gravity="right"
+                    android:hint="@string/orderdate"
+                    android:text="@={orderNowViewModel.deliveredDate}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+            </RelativeLayout>
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/anim_view"
+                android:layout_width="@dimen/dp100w"
+                android:layout_height="@dimen/dp100h"
+                android:layout_centerInParent="true"
+                android:visibility="gone"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true" />
+
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/rel_date"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+
+            <app.grand.a8oson.base.CustomEditText
+                android:id="@+id/edOrderDetail"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80h"
+                android:layout_below="@+id/divider4"
+                android:background="@color/colorWhite"
+                android:hint="@string/orderDetailsHint"
+                android:paddingRight="@dimen/dp8w"
+                android:text="@={orderNowViewModel.orderRequest.description}" />
+
+            <ImageView
+                android:id="@+id/orderImage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp80h"
+                android:layout_below="@+id/edOrderDetail" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/addImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orderImage"
+                android:layout_margin="@dimen/dp15h"
+                android:onClick="@{() -> orderNowViewModel.pickOrderDetailImage()}"
+                android:src="@drawable/ic_camera"
+                app:backgroundTint="@color/colorPrimaryDark" />
+        </RelativeLayout>
+    </ScrollView>
+
+
+</layout>

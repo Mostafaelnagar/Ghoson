@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="settingsViewModels"
+            type="app.grand.a8oson.viewModels.SettingsViewModels" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp80h">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/profileSettings"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/dp8h"
+                    android:onClick="@{() -> settingsViewModels.goBack()}"
+                    android:src="@drawable/ic_back_forward" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/cardTitle"
+            android:layout_marginTop="@dimen/dp20h">
+            <!--balance data-->
+            <TextView
+                android:id="@+id/pr_tv_balance"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:onClick="@{() -> settingsViewModels.goMyStore()}"
+                android:padding="@dimen/dp8h"
+                android:text="@string/settingsStores"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <View
+                android:id="@+id/dividerBalance"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/pr_tv_balance"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+            <!--Orders Num data-->
+
+            <TextView
+                android:id="@+id/pr_tv_ordersNum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/dividerBalance"
+                android:layout_marginTop="@dimen/dp8h"
+                android:onClick="@{() -> settingsViewModels.goEditProfile()}"
+                android:padding="@dimen/dp8h"
+                android:text="@string/settingsEditProfile"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+
+            <View
+                android:id="@+id/dividerOdersNum"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/pr_tv_ordersNum"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+
+            <!--Clients Comments data-->
+
+            <TextView
+                android:id="@+id/pr_tv_Comments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/dividerOdersNum"
+                android:layout_marginTop="@dimen/dp8h"
+                android:onClick="@{() -> settingsViewModels.goPolicy()}"
+                android:padding="@dimen/dp8h"
+                android:text="@string/settingsPolicy"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <View
+                android:id="@+id/dividerComments"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/pr_tv_Comments"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+
+            <!--Settings data-->
+
+            <TextView
+                android:id="@+id/pr_tv_settings"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/dividerComments"
+                android:layout_marginTop="@dimen/dp8h"
+                android:onClick="@{() -> settingsViewModels.goTerms()}"
+                android:padding="@dimen/dp8h"
+                android:text="@string/settingsTerms"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <View
+                android:id="@+id/dividerSettings"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/pr_tv_settings"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+            <!--Log out data-->
+
+            <TextView
+                android:id="@+id/pr_tv_rateApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/dividerSettings"
+                android:layout_marginTop="@dimen/dp8h"
+                android:onClick="@{() -> settingsViewModels.goRateApp()}"
+                android:padding="@dimen/dp8h"
+                android:text="@string/settingsRateApp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <View
+                android:id="@+id/dividerRate"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/pr_tv_rateApp"
+                android:layout_marginTop="@dimen/dp8h"
+                android:background="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/pr_tv_howTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/dividerRate"
+                android:layout_marginTop="@dimen/dp8h"
+                android:onClick="@{() -> settingsViewModels.goHowToWork()}"
+                android:padding="@dimen/dp8h"
+                android:text="@string/settingsHowTo"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

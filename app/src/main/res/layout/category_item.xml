@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="categoriesItemViewModels"
+            type="app.grand.a8oson.viewModels.itemViewModels.CategoriesItemViewModel" />
+    </data>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp8h"
+        android:background="@drawable/rounded_shape"
+        android:padding="@dimen/dp8h"
+        android:onClick="@{() -> categoriesItemViewModels.filterByCategory()}"
+        android:text="@{categoriesItemViewModels.categories.name}"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@color/colorPrimaryDark" />
+
+</layout>

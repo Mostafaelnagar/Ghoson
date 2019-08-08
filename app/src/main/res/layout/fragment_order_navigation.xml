@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="orderNavigationViewModels"
+            type="app.grand.a8oson.viewModels.OrderNavigationViewModels" />
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp80h">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:paddingRight="@dimen/dp4h"
+                    android:src="@drawable/ic_back_forward" />
+
+                <TextView
+                    android:id="@+id/pr_tv_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:text="@string/addressText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <fragment
+            android:id="@+id/sendPriceMap"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/cardShopLocation"
+            android:layout_below="@+id/cardTitle" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardShopLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/cardUserLocation"
+            android:layout_marginBottom="@dimen/dp2h">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/dp12h"
+                android:layout_marginTop="@dimen/dp12h"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:layout_weight=".2"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:layout_weight="1.8"
+                    android:drawablePadding="@dimen/dp8w"
+                    android:drawableRight="@drawable/ic_shope"
+                    android:gravity="center_vertical|right"
+                    android:text="@string/shopText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/colorPrimaryDark" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardUserLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginBottom="@dimen/dp12h"
+                android:layout_marginTop="@dimen/dp12h"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:layout_weight=".2"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:layout_weight="1.8"
+                    android:drawablePadding="@dimen/dp8w"
+                    android:drawableRight="@drawable/ic_profile"
+                    android:gravity="center_vertical|right"
+                    android:text="@string/userDataText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                    android:textColor="@color/colorPrimaryDark" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</layout>

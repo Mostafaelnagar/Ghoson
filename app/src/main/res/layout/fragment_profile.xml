@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="profileViewModels"
+            type="app.grand.a8oson.viewModels.ProfileViewModels" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clickable="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/pr_rel_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/pr_tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:gravity="center_horizontal"
+                    android:text="-------"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <me.zhanghai.android.materialratingbar.MaterialRatingBar
+                    android:id="@+id/pr_ra_rating"
+                    style="@style/MyRatingBarTwo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pr_tv_name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/dp12h"
+                    android:numStars="5"
+                    app:rating="@{profileViewModels.checkData.rate}" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pr_ra_rating">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/userProfileImage"
+                        android:layout_width="@dimen/dp80w"
+                        android:layout_height="@dimen/dp80h"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:src="@drawable/man" />
+
+                    <View
+                        android:id="@+id/divider2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="3dp"
+                        android:layout_centerInParent="true"
+                        android:layout_toLeftOf="@+id/userProfileImage"
+                        android:background="?android:attr/listDivider" />
+
+                    <View
+                        android:id="@+id/divider"
+                        android:layout_width="wrap_content"
+                        android:layout_height="3dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerInParent="true"
+                        android:layout_toRightOf="@+id/userProfileImage"
+                        android:background="?android:attr/listDivider" />
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pr_rel_data"
+                android:layout_marginTop="@dimen/dp20h">
+                <!--balance data-->
+
+                <RelativeLayout
+                    android:id="@+id/rel_delegate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{profileViewModels.notADelegate,default=gone}">
+
+                    <TextView
+                        android:id="@+id/pr_tv_balance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:padding="@dimen/dp8h"
+                        android:text="@string/profileBalance"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/pr_tv_price"
+                        android:gravity="center_vertical"
+                        android:padding="@dimen/dp8h"
+                        android:text="@string/profileRiyal"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/pr_tv_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:padding="@dimen/dp8h"
+                        android:text="@{profileViewModels.checkData.account}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <View
+                        android:id="@+id/dividerBalance"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/pr_tv_balance"
+                        android:layout_marginTop="@dimen/dp8h"
+                        android:background="@color/colorPrimaryDark" />
+                    <!--Orders Num data-->
+
+                    <TextView
+                        android:id="@+id/pr_tv_ordersNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/dividerBalance"
+                        android:layout_marginTop="@dimen/dp8h"
+                        android:padding="@dimen/dp8h"
+                        android:text="@string/profileOrdersNum"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/dividerBalance"
+                        android:layout_marginTop="@dimen/dp8h"
+                        android:padding="@dimen/dp8h"
+                        android:text="@{profileViewModels.checkData.ordersCount}"
+
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <View
+                        android:id="@+id/dividerOdersNum"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/pr_tv_ordersNum"
+                        android:layout_marginTop="@dimen/dp8h"
+                        android:background="@color/colorPrimaryDark" />
+
+                    <!--Clients Comments data-->
+
+                    <TextView
+                        android:id="@+id/pr_tv_Comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/dividerOdersNum"
+                        android:layout_marginTop="@dimen/dp8h"
+                        android:padding="@dimen/dp8h"
+                        android:text="@string/profileComments"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/dividerOdersNum"
+                        android:layout_marginTop="@dimen/dp8h"
+                        android:layout_toRightOf="@+id/pt_tv_commentsNum"
+                        android:padding="@dimen/dp8h"
+                        android:text="@string/Comments"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:id="@+id/pt_tv_commentsNum"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@+id/dividerOdersNum"
+                        android:layout_marginTop="@dimen/dp8h"
+                        android:padding="@dimen/dp8h"
+                        android:text="@{profileViewModels.checkData.reviewsCount}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <View
+                        android:id="@+id/dividerComments"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/pr_tv_Comments"
+                        android:layout_marginTop="@dimen/dp8h"
+                        android:background="@color/colorPrimaryDark" />
+
+                </RelativeLayout>
+
+                <!--Settings data-->
+
+                <TextView
+                    android:id="@+id/pr_tv_settings"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/rel_delegate"
+                    android:layout_marginTop="@dimen/dp8h"
+                    android:onClick="@{() -> profileViewModels.goSettings()}"
+                    android:padding="@dimen/dp8h"
+                    android:text="@string/profileSettings"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <View
+                    android:id="@+id/dividerSettings"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/pr_tv_settings"
+                    android:layout_marginTop="@dimen/dp8h"
+                    android:background="@color/colorPrimaryDark" />
+                <!--Log out data-->
+
+                <TextView
+                    android:id="@+id/pr_tv_logOut"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/dividerSettings"
+                    android:layout_marginTop="@dimen/dp8h"
+                    android:onClick="@{() -> profileViewModels.goLogout()}"
+                    android:padding="@dimen/dp8h"
+                    android:text="@string/profileExit"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+
+            </RelativeLayout>
+        </RelativeLayout>
+
+    </ScrollView>
+
+</layout>

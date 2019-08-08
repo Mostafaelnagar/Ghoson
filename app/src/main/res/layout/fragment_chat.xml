@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="chatViewModels"
+            type="app.grand.a8oson.viewModels.ChatViewModels" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:paddingRight="@dimen/dp4h"
+                        android:src="@drawable/ic_back_forward" />
+
+                    <TextView
+                        android:id="@+id/pr_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:text="@{chatViewModels.chatName}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:onClick="@{() -> chatViewModels.orderNavigation()}"
+                        android:padding="@dimen/dp4h"
+                        android:src="@drawable/ic_map_dir" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{chatViewModels.sendOrderBill,default=gone}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:paddingRight="@dimen/dp4w"
+                        android:text="@string/sendBillDesc"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp25h"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp6w"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:background="@drawable/corner_view"
+                        android:padding="@dimen/dp4h"
+                        android:text="@string/sendBill"
+                        android:textColor="@color/colorWhite" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{chatViewModels.sendOrderImage,default=gone}">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:paddingRight="@dimen/dp4w"
+                        android:text="@string/sendOrderImageDesc"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp25h"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp6w"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:background="@drawable/corner_view"
+                        android:padding="@dimen/dp4h"
+                        android:text="@string/sendOrderImage"
+                        android:textColor="@color/colorWhite" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="@{chatViewModels.orderComplete,default=gone}">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:paddingRight="@dimen/dp4w"
+                        android:text="@string/orderCompleteDesc"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/dp25h"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp6w"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:background="@drawable/corner_view"
+                        android:padding="@dimen/dp4h"
+                        android:text="@string/orderComplete"
+                        android:textColor="@color/colorWhite" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="@{chatViewModels.checkDecision,default=gone}"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="@dimen/dp4h"
+                        android:text="@string/orderReject"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:paddingBottom="@dimen/dp4h"
+                        android:text="@string/orderAccept"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recChat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/rel_sendChat"
+            android:layout_below="@+id/cardTitle"
+            app:chatAdapter="@{chatViewModels.chatAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+
+        <RelativeLayout
+            android:id="@+id/rel_sendChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <app.grand.a8oson.base.CustomEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginRight="@dimen/dp4w"
+                android:layout_toRightOf="@+id/fSendMessage"
+                android:background="@drawable/rounded_shape"
+                android:hint="@string/sendMessagehint"
+                android:padding="@dimen/dp8h"
+                android:text="@={chatViewModels.chatRequest.message}" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fSendMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp15h"
+                android:src="@drawable/ic_send"
+                app:backgroundTint="@color/colorPrimaryDark" />
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

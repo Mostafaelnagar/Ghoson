@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="notificationsItemViewModel"
+            type="app.grand.a8oson.viewModels.itemViewModels.MyNotificationsItemViewModel" />
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{() -> notificationsItemViewModel.orderDetails()}"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/dp8w"
+            android:layout_marginTop="@dimen/dp4h"
+            android:text="@{notificationsItemViewModel.notificationsData.createdAt}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp4h"
+                android:layout_weight="1.5"
+                android:gravity="right"
+                android:text="@{notificationsItemViewModel.notificationsData.text}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <ImageView
+                android:id="@+id/itemImage"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp80h"
+                android:layout_weight=".5"
+                android:padding="@dimen/dp4h"
+                android:src="@drawable/logo" />
+
+        </LinearLayout>
+
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/itemImage"
+            android:layout_marginTop="@dimen/dp2h"
+            android:background="@color/colorPrimaryDark" />
+
+    </LinearLayout>
+</layout>

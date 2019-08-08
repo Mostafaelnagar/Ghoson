@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="orderViewModels"
+            type="app.grand.a8oson.viewModels.OrderDetailViewModels" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <View
+                    android:id="@+id/divider7"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp80h"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:onClick="@{() -> orderViewModels.toBack()}"
+                        android:paddingRight="@dimen/dp4h"
+                        android:src="@drawable/ic_back_forward" />
+
+                    <TextView
+                        android:id="@+id/pr_tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:hint="@string/marketHint"
+                        android:text="@{orderViewModels.detail.marketName}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:id="@+id/lin_map"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardTitle">
+
+                <fragment
+                    android:id="@+id/orderDetailmapFragment"
+                    class="com.google.android.gms.maps.MapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp180h" />
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardOrder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/lin_map"
+                android:layout_marginTop="@dimen/dp2h">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/pr_tv_orderDetail"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/dp4h"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:text="@string/orderDetail"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <LinearLayout
+                        android:id="@+id/pr_tv_orderTotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:visibility="@{orderViewModels.checkTotal,default=gone}">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp4h"
+                            android:layout_marginTop="@dimen/dp12h"
+                            android:hint="@string/ordertotal"
+                            android:text="@{orderViewModels.detail.totalCost}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/dp4h"
+                            android:layout_marginTop="@dimen/dp12h"
+                            android:layout_toRightOf="@+id/pr_tv_orderTotal"
+                            android:text="$"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryDark" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/pr_tv_orderDetail"
+                        android:layout_margin="@dimen/dp8h"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/dp4h"
+                            android:layout_marginTop="@dimen/dp12h"
+                            android:text="@{orderViewModels.detail.code}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/dp4h"
+                            android:layout_marginTop="@dimen/dp12h"
+                            android:text="@{orderViewModels.detail.user.name}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/dp4h"
+                            android:layout_marginTop="@dimen/dp12h"
+                            android:text="@{orderViewModels.detail.user.mobile}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:layout_margin="@dimen/dp4h"
+                            android:layout_marginTop="@dimen/dp12h"
+                            android:text="@{orderViewModels.detail.address}"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryDark" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardOrderDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cardOrder"
+
+                android:layout_marginTop="@dimen/dp2h">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp12w">
+
+                    <TextView
+                        android:id="@+id/pr_tv_orderDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_margin="@dimen/dp4h"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:text="@string/orderDesc"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/pr_tv_orderDesc"
+                        android:layout_margin="@dimen/dp12h"
+                        android:gravity="right"
+                        android:text="@{orderViewModels.detail.description}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardMandopDetails"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_below="@+id/cardOrderDesc"
+                android:layout_marginTop="@dimen/dp2h"
+                android:visibility="@{orderViewModels.checkdelegate,default=gone}">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dp12w">
+
+                        <TextView
+                            android:id="@+id/pr_tv_mandopDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="@dimen/dp4h"
+                            android:layout_marginTop="@dimen/dp12h"
+                            android:text="@string/mandopDetials"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorPrimaryDark" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/pr_tv_mandopDesc"
+                            android:layout_marginBottom="@dimen/dp15h"
+                            android:layout_marginTop="@dimen/dp12h"
+                            android:gravity="right"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/dp12h"
+                                android:gravity="right"
+                                android:text="@{orderViewModels.detail.representative.name}"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                                android:textColor="@color/colorPrimaryDark" />
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/dp50w"
+                                android:layout_height="@dimen/dp50h"
+                                android:src="@drawable/man"
+                                app:delegateImage="@{orderViewModels.detail.representative.image.name}" />
+
+
+                        </LinearLayout>
+
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:id="@+id/lin_contact"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/cardMandopDetails"
+                        android:layout_marginTop="@dimen/dp12h"
+                        android:background="@color/colorPrimaryDark"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ic_chat"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:onClick="@{() -> orderViewModels.toChat()}"
+                            android:paddingBottom="@dimen/dp6h"
+                            android:paddingTop="@dimen/dp6h"
+                            android:text="@string/chat"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorWhite" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawableRight="@drawable/ic_call"
+                            android:gravity="center_horizontal|center_vertical"
+                            android:paddingBottom="@dimen/dp6h"
+                            android:paddingTop="@dimen/dp6h"
+                            android:text="@string/call"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="@color/colorWhite" />
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+    </ScrollView>
+</layout>

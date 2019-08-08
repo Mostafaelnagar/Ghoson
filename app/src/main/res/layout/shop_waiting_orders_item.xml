@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <data>
+
+        <variable
+            name="orderWaitingItemViewModels"
+            type="app.grand.a8oson.viewModels.itemViewModels.WaitingItemViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/itemImage"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/dp4h">
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:maxLength="30"
+                    android:maxLines="1"
+                    android:text="@{orderWaitingItemViewModels.myOrdersData.userName}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorPrimaryDark" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/dp4h"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:text="@{orderWaitingItemViewModels.myOrdersData.deliveryTime}"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="@color/colorPrimaryDark" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginLeft="@dimen/dp6w"
+                        android:text="@string/deliverTime"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                        android:textColor="@color/colorPrimaryDark" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/username"
+                    android:maxLength="30"
+                    android:maxLines="2"
+                    android:text="@{orderWaitingItemViewModels.myOrdersData.description}"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/itemImage"
+            android:layout_width="@dimen/dp80w"
+            android:layout_height="@dimen/dp80h"
+            android:layout_alignParentRight="true"
+            android:padding="@dimen/dp4h"
+            android:src="@drawable/man"
+            app:orderImage="@{orderWaitingItemViewModels.myOrdersData.userImage}"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="2dp" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/itemImage"
+            android:layout_marginTop="@dimen/dp2h"
+            android:background="@color/colorPrimaryDark" />
+
+    </RelativeLayout>
+</layout>

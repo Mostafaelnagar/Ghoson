@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="storeDetailSViewModel"
+            type="app.grand.a8oson.viewModels.StoreDetailsViewModels" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/mandoptext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:drawablePadding="@dimen/dp8h"
+            android:drawableRight="@drawable/ic_request_as_mandop"
+            android:gravity="center_vertical"
+            android:padding="@dimen/dp8h"
+            android:onClick="@{() -> storeDetailSViewModel.registerAsDelegate()}"
+            android:text="@string/mandopSignUp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorWhite" />
+
+        <fragment
+            android:id="@+id/mapFragment"
+            class="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/relStoreDate"
+            android:layout_below="@+id/mandoptext" />
+
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnfav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/relStoreDate"
+            android:layout_marginLeft="@dimen/dp15w"
+            android:onClick="@{() -> storeDetailSViewModel.goOrderNow()}"
+            android:src="@drawable/ic_add"
+            app:backgroundTint="@color/colorPrimaryDark" />
+
+        <RelativeLayout
+            android:id="@+id/relStoreDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginRight="@dimen/dp15w">
+
+            <TextView
+                android:id="@+id/storeType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:padding="@dimen/dp8h"
+                android:text="@{storeDetailSViewModel.marketDetails.category}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/storeAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/storeType"
+                android:maxLines="2"
+                android:padding="@dimen/dp8h"
+                android:text="@{storeDetailSViewModel.marketDetails.address}"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/storeAddress"
+                android:layout_marginTop="@dimen/dp12h"
+                android:drawablePadding="@dimen/dp8w"
+                android:drawableRight="@drawable/ic_time"
+                android:gravity="center_vertical"
+                android:padding="@dimen/dp8h"
+                android:text="@string/today"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+            <TextView
+                android:id="@+id/marDetails_tv_workingHours"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/storeAddress"
+                android:layout_marginTop="@dimen/dp12h"
+                android:drawableLeft="@drawable/ic_arrow_down"
+                android:drawablePadding="@dimen/dp8w"
+                android:gravity="center_vertical"
+                android:onClick="@{() -> storeDetailSViewModel.workingHours()}"
+                android:padding="@dimen/dp8h"
+                android:text="@string/allDay"
+
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:textColor="@color/colorPrimaryDark" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</layout>
